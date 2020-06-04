@@ -219,3 +219,36 @@ FROM(SELECT s.id, s.name, COUNT(*) num_accounts
      ORDER BY num_accounts) AS Table1;
 
 
+## DATES
+/*DATE_TRUNC to get rid off (second, day, month, year)*/
+SELECT DATE_TRUNC('day', occurred_at) AS day,
+       SUM(standard_qty) AS standard_qty_sum
+FROM orders
+GROUP BY 1
+ORDER BY 1;
+
+/* DATE_PART extract day, month, year
+dow = day of the week 0:Sunday 6:Saturday*/
+SELECT DATE_PART('dow', occurred_at) AS day_of_week,
+       SUM(total) AS total_qty
+FROM orders
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*Example*/
+/*In which month of which year did Walmart spend the most on 
+gloss paper in terms of dollars?*/
+SELECT DATE_TRUNC('month', o.occurred_at) ord_date, 
+       SUM(o.gloss_amt_usd) tot_spent
+FROM orders o 
+JOIN accounts a
+ON a.id = o.account_id
+WHERE a.name = 'Walmart'
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 1;
+
+
+
+
+
