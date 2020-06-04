@@ -1,3 +1,6 @@
+### SQL AGGREGATIONS
+
+
 #PostgreSQL Environment Setup
 
 # SQL

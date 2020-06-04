@@ -1,3 +1,6 @@
+### SQL JOINS
+
+
 #PostgreSQL Environment Setup
 
 # SQL
